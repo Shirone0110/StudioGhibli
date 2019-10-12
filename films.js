@@ -1,5 +1,7 @@
 var filmPromise = d3.json(" https://ghibliapi.herokuapp.com/films ")
 
+var pics = ["castle.jpg", "grave.jpg", "totoro.jpg", "kiki.jpg", "yesterday.jpg", "porco.jpg", "pom.jpg", "whisper.jpg", "mononoke.jpg", "yamadas.jpg", "spirited.jpg", "cat.jpg", "howl.jpg", "tales.jpg", "ponyo.jpg", "arrietty.jpg", "poppy.jpg", "wind.jpg", "kaguya.jpg", "marnie.jpg"];
+
 
 filmPromise.then(
 function (film)
@@ -24,7 +26,7 @@ var film_info = function (films)
         .on("click", function (film)
            {
     removefilm();
-        description(film)
+        description(film, films.indexOf(film))
     })
 }
 
@@ -33,9 +35,12 @@ var removefilm = function()
     d3.selectAll("#info *").remove();
 }
 
-var description = function (film)
+var description = function (film, index)
 {
     var box = d3.select("#info");
+    
+    box.append("img")
+        .attr("src", pics[index])
     
     box.append("p")
         .text("Title: " + film.title)
