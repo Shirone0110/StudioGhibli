@@ -35,6 +35,7 @@ body{
 {
     font-weight: bold;
     background-color: #ffffb3;
+    cursor: pointer;
 }
 
 #films
